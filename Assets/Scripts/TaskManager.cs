@@ -39,6 +39,7 @@ public class TaskManager : MonoBehaviour
     {
         if (fruit?.Kind == Task.Goal.Kind && pickedCount < Task.Count)
         {
+            _addOneEvent.Invoke();
             pickedCount++;
         }
 
