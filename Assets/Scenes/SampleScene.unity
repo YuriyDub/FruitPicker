@@ -3842,7 +3842,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148397983138}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.939, z: -2.441}
+  m_LocalPosition: {x: 0, y: 0.88, z: -2.441}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5162,6 +5162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a42ff92a2876b41a74eb399ea32b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxTaskCapacity: 5
   _wonEvent:
     m_PersistentCalls:
       m_Calls:
@@ -5237,9 +5238,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _addOneEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7813863120631463595}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: addOne
+          m_BoolArgument: 0
+        m_CallState: 2
   _fruitCounter: {fileID: 207569865}
   _fruitPool: {fileID: 1930018648}
-  _basketAnimator: {fileID: 7813863120631463595}
 --- !u!82 &5866666020523656551
 AudioSource:
   m_ObjectHideFlags: 0

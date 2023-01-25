@@ -9,6 +9,6 @@ public class FruitsData : ScriptableObject
 
     public Fruit GetRandElement()
     {
-        return FruitTypes[Random.Range(0, FruitTypes.Length - 1)];
+        return FruitTypes[Random.Range(0, FruitTypes.Length)];
     }
 }

@@ -8,23 +8,37 @@ public class TaskManager : MonoBehaviour
 {
     public Task<Fruit> Task { get; set; }
 
+    [SerializeField] private int maxTaskCapacity;
+
     [SerializeField] private UnityEvent _wonEvent;
+
+    [SerializeField] private UnityEvent _addOneEvent;
 
     [SerializeField] private TextMeshProUGUI _fruitCounter;
 
     [SerializeField] private FruitPool _fruitPool;
 
-
-    [SerializeField] private Animator _basketAnimator;
-
     private int pickedCount;
+
+    private void Awake()
+    {
+        var element = _fruitPool.FruitsData.GetRandElement();
+        var count = Random.Range(1, maxTaskCapacity + 1);
+
+        Task = new Task<Fruit>(element, count);
+
+        _fruitPool.PoolStart(Task);
+    }
+
+    private void Update()
+    {
+        TextUpdate();
+    }
 
     public void PutFruit(Fruit fruit)
     {
         if (fruit?.Kind == Task.Goal.Kind && pickedCount < Task.Count)
         {
-            _basketAnimator.SetTrigger("plusOne");
-
             pickedCount++;
         }
 
@@ -36,17 +50,7 @@ public class TaskManager : MonoBehaviour
         return;
     }
 
-    private void Awake()
-    {
-        var element = _fruitPool.FruitsData.GetRandElement();
-        var count = Random.Range(1, 6);
-
-        Task = new Task<Fruit>(element, count);
-
-        _fruitPool.PoolStart(Task);
-    }
-
-    private void Update()
+    private void TextUpdate()
     {
         _fruitCounter.text = pickedCount + " / " + Task.Count + " " + Task.Goal.gameObject.name + "s";
     }
